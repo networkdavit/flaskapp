@@ -40,7 +40,7 @@ def receive_data():
 		try:
 			db.session.add(submission)
 			db.session.commit()
-			return redirect("thankyou")
+			return redirect("index.html")
 		except:
 			return "did not save to database"
 	else:
