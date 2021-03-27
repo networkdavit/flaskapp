@@ -1,5 +1,3 @@
-# flaskapp.py
-# This is a "hello world" app sample for flask app. You may have a different file.
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 
@@ -22,7 +20,7 @@ def hello_world():
 
 @app.route('/<page_name>')
 def page(page_name):
-    return render_template(f"{page_name}")
+    return render_template(page_name)
 
 @app.route("/receive_data", methods=['POST'])
 def receive_data():
@@ -30,11 +28,7 @@ def receive_data():
 		email = request.form["email"]
 		subject = request.form["subject"]
 		message = request.form["message"]
-#		data = f"Email: {email} \nSubject: {subject} \nMessage: {message}\n    "
-#		f = open("message.txt", "a")
-#		f.write(data)
-#		f.close()
-#		return redirect("index.html")
+
 		submission = Submission(email = email, subject = subject, message = message)
 
 		try:
@@ -48,5 +42,5 @@ def receive_data():
 
 
 if __name__ == '__main__':
-   app.run()
+   app.run(debug=True)
    
