@@ -1,5 +1,3 @@
-# flaskapp.py
-# This is a "hello world" app sample for flask app. You may have a different file.
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 
@@ -30,17 +28,13 @@ def receive_data():
 		email = request.form["email"]
 		subject = request.form["subject"]
 		message = request.form["message"]
-#		data = f"Email: {email} \nSubject: {subject} \nMessage: {message}\n    "
-#		f = open("message.txt", "a")
-#		f.write(data)
-#		f.close()
-#		return redirect("index.html")
+
 		submission = Submission(email = email, subject = subject, message = message)
 
 		try:
 			db.session.add(submission)
 			db.session.commit()
-			return redirect("index.html")
+			return redirect("thankyou.html")
 		except:
 			return "did not save to database"
 	else:
