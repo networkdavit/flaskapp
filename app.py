@@ -20,7 +20,7 @@ def hello_world():
 
 @app.route('/<page_name>')
 def page(page_name):
-    return render_template(f"{page_name}")
+    return render_template(page_name)
 
 @app.route("/receive_data", methods=['POST'])
 def receive_data():
